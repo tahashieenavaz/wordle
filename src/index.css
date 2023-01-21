@@ -13,8 +13,16 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --button-size: 60px;
+  --keyboard-gap: 0.3rem;
 }
 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -70,6 +78,53 @@ button:focus-visible {
 }
 
 #keyboard button {
-  width: 75px;
+  width: var(--button-size);
   aspect-ratio: 1;
+  display: grid;
+  place-content: center;
+  font-size: 1.4rem;
+}
+
+#keyboard .row {
+  margin-bottom: 1rem;
+  display: flex;
+  gap: var(--keyboard-gap);
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+#board {
+  width: calc(80 / 100 * (10 * var(--button-size) + 9 * var(--keyboard-gap)));
+  min-height: calc(
+    80 / 100 * (10 * var(--button-size) + 9 * var(--keyboard-gap))
+  );
+  border-radius: 1rem;
+  background: #2c2c2c;
+  margin-bottom: 2rem;
+  padding: 2rem;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#board {
+  display: grid;
+  gap: 1rem;
+}
+#board .row {
+  display: flex;
+  gap: 1rem;
+}
+.letter {
+  flex: 1;
+  aspect-ratio: 1;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 0.5rem;
+  display: grid;
+  place-content: center;
+  font-weight: bold;
+  font-size: 1.4rem;
 }

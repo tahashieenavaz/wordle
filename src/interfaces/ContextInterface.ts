@@ -1,6 +1,6 @@
 export default interface ContextInterface {
-  guesses: Array<string>;
+  guesses: Array<Array<string>>;
+  currentIndex: number;
   setGuesses: Function;
-  currentWord: string;
-  setCurrentWord: Function;
+  setCurrentIndex: Function;
 }
