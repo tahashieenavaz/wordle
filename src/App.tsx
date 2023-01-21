@@ -16,6 +16,11 @@ function App() {
       .map(() => Array(5).fill(null))
   )
 
+  useEffect(() => {
+    const countArray = guesses.map((row) => row.filter(Boolean).length)
+    setCurrentIndex(countArray.findIndex((element) => element != 5))
+  }, [guesses])
+
   const store: ContextInterface = {
     currentIndex,
     guesses,
