@@ -1,3 +1,4 @@
+export const wordCount = 14855;
 export const words = [
   "aahed",
   "aalii",
