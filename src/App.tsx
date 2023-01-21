@@ -1,28 +1,31 @@
-import { useEffect, useState } from "react";
-import { alphabet } from "./utils";
+import { AppContext } from "./contexts/AppContext";
+import ContextInterface from "./interfaces/ContextInterface";
+
+import Board from "./components/Board";
 import Letter from "./components/Letter";
+import Keyboard from "./components/Keyboard";
+
+import { useState } from "react";
 
 import "./App.css";
 
 function App() {
-  const [currentWord, setCurrentWord] = useState("sdf");
+  const [currentWord, setCurrentWord] = useState("");
+  const [guesses, setGuesses] = useState([]);
 
-  useEffect(() => {
-    const changeLetter = (e: KeyboardEvent) => {
-      if (alphabet.includes(e.key)) setCurrentWord((prev) => prev + e.key);
-    };
-
-    addEventListener("keydown", changeLetter);
-
-    return () => {
-      removeEventListener("keydown", changeLetter);
-    };
-  }, []);
+  const store: ContextInterface = {
+    currentWord,
+    guesses,
+    setCurrentWord,
+    setGuesses,
+  };
 
   return (
-    <>
-      <div>{currentWord}</div>
-    </>
+    <AppContext.Provider value={store}>
+      <Board />
+      <Letter letter="K" />
+      <Keyboard />
+    </AppContext.Provider>
   );
 }
 
