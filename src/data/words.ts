@@ -1,4 +1,4 @@
-export const wordCount = 14855;
+export const wordCount = 14855
 export const words = [
   "aahed",
   "aalii",
@@ -14855,4 +14855,4 @@ export const words = [
   "flack",
   "widow",
   "augur",
-];
+]
