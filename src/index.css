@@ -79,7 +79,7 @@ button:focus-visible {
 
 #keyboard button {
   width: var(--button-size);
-  aspect-ratio: 1;
+  height: var(--button-size);
   display: grid;
   place-content: center;
   font-size: 1.4rem;

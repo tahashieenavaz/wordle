@@ -5,7 +5,6 @@ export default function SubmitButton() {
         style={{
           width: 'fit-content',
           height: 'var(--button-size)',
-          aspectRatio: 'unset',
         }}>
         ENTER
       </button>
