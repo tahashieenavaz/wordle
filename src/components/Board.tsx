@@ -14,7 +14,11 @@ export default function Board() {
               return (
                 <motion.div
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: 1, rotate: 360 }}
+                  animate={{
+                    opacity: 1,
+                    rotateX: 360,
+                    background: letter ? "green" : "",
+                  }}
                   key={`${i} + ${j} + ${letter ? "y" : "n"}`}
                   style={{ background: letter ? "#18A558" : "" }}
                   className="letter"
