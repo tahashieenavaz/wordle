@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { alphabet } from "./utils";
+import Letter from "./components/Letter";
+
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [currentWord, setCurrentWord] = useState("sdf");
 
-  return <div className="App">Welcome</div>;
+  useEffect(() => {
+    const changeLetter = (e: KeyboardEvent) => {
+      if (alphabet.includes(e.key)) setCurrentWord((prev) => prev + e.key);
+    };
+
+    addEventListener("keydown", changeLetter);
+
+    return () => {
+      removeEventListener("keydown", changeLetter);
+    };
+  }, []);
+
+  return (
+    <>
+      <div>{currentWord}</div>
+    </>
+  );
 }
 
 export default App;
