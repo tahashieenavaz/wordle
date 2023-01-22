@@ -15,7 +15,7 @@ function App() {
     Array(config.numberOfQuestions).fill(false)
   )
   const [guesses, setGuesses] = useState<Array<Array<string | null>>>(
-    Array(6)
+    Array(config.numberOfQuestions)
       .fill(null)
       .map(() => Array(5).fill(null))
   )
