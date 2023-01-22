@@ -121,10 +121,30 @@ button:focus-visible {
 .letter {
   flex: 1;
   aspect-ratio: 1;
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.4);
   border-radius: 0.5rem;
   display: grid;
   place-content: center;
   font-weight: bold;
   font-size: 1.4rem;
+  transition: 1s;
+}
+
+.letter.correct {
+  animation: changeGreen 1s forwards;
+}
+
+.letter.exist {
+  animation: changeOrange 1s forwards;
+}
+
+@keyframes changeOrange {
+  to {
+    background: #dc4731;
+  }
+}
+@keyframes changeGreen {
+  to {
+    background: #16796f;
+  }
 }

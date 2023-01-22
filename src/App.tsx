@@ -4,21 +4,41 @@ import ContextInterface from './interfaces/ContextInterface'
 import Board from './components/Board'
 import Keyboard from './components/Keyboard'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import './App.css'
 import config from './config'
+import { snapshot, storage, today, wordOfTheDay } from './utils'
 
 function App() {
-  const [currentIndex, setCurrentIndex] = useState(0)
   const [submitted, setSubmitted] = useState(
     Array(config.numberOfQuestions).fill(false)
   )
   const [guesses, setGuesses] = useState<Array<Array<string | null>>>(
-    Array(config.numberOfQuestions)
-      .fill(null)
-      .map(() => Array(5).fill(null))
+    storage(config.storage.boardKey)
   )
+  const [currentIndex, setCurrentIndex] = useState(() => {
+    for (let i = 0; i < guesses.length; i++) {
+      if (guesses[i][0] === null) return i
+    }
+  })
+
+  useEffect(() => {
+    if (storage(config.storage.dateKey) != today()) {
+      storage(
+        config.storage.boardKey,
+        Array(config.numberOfQuestions)
+          .fill(null)
+          .map(() => Array(5).fill(null))
+      )
+    }
+  }, [])
+
+  useEffect(() => {
+    snapshot(guesses)
+  }, [guesses])
+
+  const todayWord = wordOfTheDay()
 
   const store: ContextInterface = {
     currentIndex,
@@ -27,6 +47,7 @@ function App() {
     setCurrentIndex,
     setGuesses,
     setSubmitted,
+    todayWord
   }
 
   return (
