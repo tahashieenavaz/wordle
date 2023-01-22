@@ -1,6 +1,7 @@
 import { useContext } from 'react'
 import { AppContext } from '../contexts/AppContext'
 import { keyboard } from '../utils'
+import ClearButton from './ClearButton'
 import SubmitButton from './SubmitButton'
 
 export default function Keyboard() {
@@ -10,6 +11,7 @@ export default function Keyboard() {
     <section id='keyboard'>
       {keyboard.map((row, rowIndex) => (
         <div className='row'>
+          {rowIndex === 1 && <ClearButton />}
           {row.map((key) => (
             <button
               onClick={() => {
@@ -25,7 +27,7 @@ export default function Keyboard() {
               {key}
             </button>
           ))}
-          {rowIndex + 1 === keyboard.length ? <SubmitButton /> : ''}
+          {rowIndex + 1 === keyboard.length && <SubmitButton />}
         </div>
       ))}
     </section>

@@ -7,25 +7,26 @@ import Keyboard from './components/Keyboard'
 import { useEffect, useState } from 'react'
 
 import './App.css'
+import config from './config'
 
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0)
-  const [guesses, setGuesses] = useState(
+  const [submitted, setSubmitted] = useState(
+    Array(config.numberOfQuestions).fill(false)
+  )
+  const [guesses, setGuesses] = useState<Array<Array<string | null>>>(
     Array(6)
       .fill(null)
       .map(() => Array(5).fill(null))
   )
 
-  useEffect(() => {
-    const countArray = guesses.map((row) => row.filter(Boolean).length)
-    setCurrentIndex(countArray.findIndex((element) => element != 5))
-  }, [guesses])
-
   const store: ContextInterface = {
     currentIndex,
     guesses,
+    submitted,
     setCurrentIndex,
     setGuesses,
+    setSubmitted,
   }
 
   return (
