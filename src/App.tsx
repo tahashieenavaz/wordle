@@ -4,7 +4,7 @@ import ContextInterface from './interfaces/ContextInterface'
 import Board from './components/Board'
 import Keyboard from './components/Keyboard'
 
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 import './App.css'
 import config from './config'

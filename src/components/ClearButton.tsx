@@ -12,7 +12,8 @@ export default function ClearButton() {
             if (index === currentIndex) {
               const nullIndex: number = guess.indexOf(null) - 1
 
-              if (nullIndex != -2) guess[nullIndex] = null
+              if (nullIndex === -1) guess[0] = null
+              else if (nullIndex != -2) guess[nullIndex] = null
               else guess[4] = null
             }
             return guess
@@ -20,7 +21,6 @@ export default function ClearButton() {
         )
 
         setGuesses(nextGuesses)
-        console.log(guesses)
       }}>
       CLR
     </button>

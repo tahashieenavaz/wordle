@@ -1,4 +1,4 @@
-import { words } from './data/words'
+import { wordCount, words } from './data/words'
 
 export const upperCaseAlphabet: Array<string> = Array(26)
   .fill()
@@ -26,4 +26,14 @@ export const wordListContains = (word: string): boolean => {
 
 export const isFiveCharLong = (word: string): boolean => {
   return word.length === 5
+}
+
+export const wordOfTheDay = () => {
+  const start = new Date(2023, 0, 0).getTime()
+  const now = new Date().getTime()
+  let days = ~~((now - start) / (60 * 60 * 24 * 1000))
+  while (days > wordCount) {
+    days -= wordCount
+  }
+  return Object.keys(words)[days]
 }
