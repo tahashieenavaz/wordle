@@ -21,6 +21,11 @@ function App() {
     for (let i = 0; i < guesses.length; i++) {
       if (guesses[i][0] === null) return i
     }
+
+    return -1
+  })
+  const [isGameRunning, setIsGameRunning] = useState(() => {
+    return storage(config.storage.isRunningKey)
   })
 
   useEffect(() => {
